@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 import Country from './Country/Country'
+import GlobalData from './GlobalData/GlobalData'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      allCasesByCountry: [],
-      allDataHighLevel: []
+      allCasesGlobal: {},
+      allCasesByCountry: []
     }
     this.getDataByCountry = this.getDataByCountry.bind(this)
-    this.getAllData = this.getAllData.bind(this)
+    this.getGlobalData = this.getGlobalData.bind(this)
   }
 
-  getAllData() {
+  getGlobalData() {
     axios.get('https://coronavirus-19-api.herokuapp.com/all')
-      .then((results) => this.setState({allDataHighLevel: results.dat}))
+      .then((results) => this.setState({allCasesGlobal: results.data}))
       .catch((err) => console.error(err))
   }
 
@@ -28,13 +29,18 @@ class App extends Component {
 
   componentDidMount() {
     this.getDataByCountry()
-    this.getAllData()
+    this.getGlobalData()
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.allCasesByCountry.map((country, i) => <Country country={country} key={i} />)}
+        <div>
+          <GlobalData data={this.state.allCasesGlobal} />
+        </div>
+        <div className="country-data">
+          {this.state.allCasesByCountry.map((country, i) => <Country country={country} key={i} />)}
+        </div>
       </div>
     );
   }
