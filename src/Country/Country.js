@@ -1,8 +1,9 @@
 import React from 'react'
+import './country.css'
 
 const Country = ({ country }) => {
   return(
-    <div>
+    <div className="country-container" >
       <p>{country.country}</p>
       <p>total number of cases: {country.cases}</p>
       <p>total number of new cases today: {country.todayCases}</p>
