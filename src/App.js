@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
+        <div className="global-data" >
           <GlobalData data={this.state.allCasesGlobal} />
         </div>
         <div className="country-data">
