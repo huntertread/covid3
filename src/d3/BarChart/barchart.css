@@ -1,0 +1,10 @@
+#barchart {
+  text-align: left;
+  margin: 15px;
+}
+
+.bar {
+  background-color: red;
+  border-bottom: 1px solid black;
+  margin: 0px 0px 5px 0px;
+}

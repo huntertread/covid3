@@ -11,10 +11,6 @@ class App extends Component {
     this.state = {
       allCasesGlobal: {},
       allCasesByCountry: [],
-      data: [12, 5, 6, 6, 9, 10],
-      width: 700,
-      height: 500,
-      id: "root",
       pageView: 'list'
     }
     this.getDataByCountry = this.getDataByCountry.bind(this)
@@ -47,7 +43,7 @@ class App extends Component {
     if (this.state.pageView === 'list') {
       return (
         <div className="App">
-          <button onClick={() => this.viewClickHandler('graphs')} >graph view</button>
+          <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
           </div>
@@ -56,14 +52,14 @@ class App extends Component {
           </div>
         </div>
       )
-    } else if (this.state.pageView === 'graphs') {
+    } else if (this.state.pageView === 'bar-chart') {
       return (
         <div className="App">
           <button onClick={() => this.viewClickHandler('list')} >list view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
           </div>
-          <BarChart data={this.state.data} width={this.state.width} height={this.state.height} />
+          <BarChart data={this.state.allCasesByCountry} width={this.state.width} height={this.state.height} />
         </div>
       )
     }
