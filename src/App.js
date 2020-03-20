@@ -3,16 +3,23 @@ import './App.css';
 import axios from 'axios'
 import Country from './Country/Country'
 import GlobalData from './GlobalData/GlobalData'
+import BarChart from './d3/BarChart/BarChart'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       allCasesGlobal: {},
-      allCasesByCountry: []
+      allCasesByCountry: [],
+      data: [12, 5, 6, 6, 9, 10],
+      width: 700,
+      height: 500,
+      id: "root",
+      pageView: 'list'
     }
     this.getDataByCountry = this.getDataByCountry.bind(this)
     this.getGlobalData = this.getGlobalData.bind(this)
+    this.viewClickHandler = this.viewClickHandler.bind(this)
   }
 
   getGlobalData() {
@@ -27,22 +34,39 @@ class App extends Component {
       .catch((err) => console.error(err))
   }
 
+  viewClickHandler(view) {
+    this.setState({pageView: view})
+  }
+
   componentDidMount() {
-    this.getDataByCountry()
     this.getGlobalData()
+    this.getDataByCountry()
   }
 
   render() {
-    return (
-      <div className="App">
-        <div className="global-data" >
-          <GlobalData data={this.state.allCasesGlobal} />
+    if (this.state.pageView === 'list') {
+      return (
+        <div className="App">
+          <button onClick={() => this.viewClickHandler('graphs')} >graph view</button>
+          <div className="global-data" >
+            <GlobalData data={this.state.allCasesGlobal} />
+          </div>
+          <div className="country-data">
+            {this.state.allCasesByCountry.map((country, i) => <Country country={country} key={i} />)}
+          </div>
         </div>
-        <div className="country-data">
-          {this.state.allCasesByCountry.map((country, i) => <Country country={country} key={i} />)}
+      )
+    } else if (this.state.pageView === 'graphs') {
+      return (
+        <div className="App">
+          <button onClick={() => this.viewClickHandler('list')} >list view</button>
+          <div className="global-data" >
+            <GlobalData data={this.state.allCasesGlobal} />
+          </div>
+          <BarChart data={this.state.data} width={this.state.width} height={this.state.height} />
         </div>
-      </div>
-    );
+      )
+    }
   }
 }
 
