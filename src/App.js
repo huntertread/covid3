@@ -4,6 +4,7 @@ import axios from 'axios'
 import Country from './Country/Country'
 import GlobalData from './GlobalData/GlobalData'
 import BarChart from './d3/BarChart/BarChart'
+import PieChart from './d3/PieChart/PieChart'
 
 class App extends Component {
   constructor() {
@@ -44,6 +45,7 @@ class App extends Component {
       return (
         <div className="App">
           <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
+          <button onClick={() => this.viewClickHandler('pie-chart')} >pie chart view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
           </div>
@@ -56,10 +58,26 @@ class App extends Component {
       return (
         <div className="App">
           <button onClick={() => this.viewClickHandler('list')} >list view</button>
+          <button onClick={() => this.viewClickHandler('pie-chart')} >pie chart view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
           </div>
-          <BarChart data={this.state.allCasesByCountry} width={this.state.width} height={this.state.height} />
+          <div className="bar-chart-global-container">
+            <BarChart data={this.state.allCasesByCountry} />
+          </div>
+        </div>
+      )
+    } else if (this.state.pageView === 'pie-chart') {
+      return (
+        <div className="App">
+          <button onClick={() => this.viewClickHandler('list')} >list view</button>
+          <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
+          <div className="global-data" >
+            <GlobalData data={this.state.allCasesGlobal} />
+          </div>
+          <div className="pie-chart-global-container">
+            <PieChart data={this.state.allCasesByCountry} />
+          </div>
         </div>
       )
     }
