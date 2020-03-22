@@ -17,7 +17,7 @@ class PieChart extends React.Component {
         radius = Math.min(width, height) / 2;
 
     var color = d3.scaleOrdinal()
-        .range(["#98abc5", "#8a89a6", "#7b6888"]);
+        .range(["grey"]);
 
     var arc = d3.arc()
         .outerRadius(radius - 10)
@@ -44,7 +44,7 @@ class PieChart extends React.Component {
 
     g.append("path")
         .attr("d", arc)
-        .style("fill", function(d) { return color(d.data); });
+        .style("fill", function(d) { return color(d.deaths); });
 
     g.append("text")
         .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })

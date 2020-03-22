@@ -1,3 +1,11 @@
 .global-data-container {
-  color: red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: grey;
+}
+
+.global-data-element {
+  margin: 15px;
 }
