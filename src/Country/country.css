@@ -1,3 +1,16 @@
 .country-container {
   margin: 25px;
 }
+
+.country-name {
+  font-weight: bold;
+  color: black;
+}
+
+.country-total-cases {
+  color: black;
+}
+
+p {
+  color: rgb(78, 78, 78);
+}

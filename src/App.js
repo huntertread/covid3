@@ -44,6 +44,7 @@ class App extends Component {
     if (this.state.pageView === 'list') {
       return (
         <div className="App">
+          <button onClick={() => this.viewClickHandler('list')} >list view</button>
           <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
           <button onClick={() => this.viewClickHandler('pie-chart')} >pie chart view</button>
           <div className="global-data" >
@@ -58,6 +59,7 @@ class App extends Component {
       return (
         <div className="App">
           <button onClick={() => this.viewClickHandler('list')} >list view</button>
+          <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
           <button onClick={() => this.viewClickHandler('pie-chart')} >pie chart view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
@@ -72,6 +74,7 @@ class App extends Component {
         <div className="App">
           <button onClick={() => this.viewClickHandler('list')} >list view</button>
           <button onClick={() => this.viewClickHandler('bar-chart')} >bar chart view</button>
+          <button onClick={() => this.viewClickHandler('pie-chart')} >pie chart view</button>
           <div className="global-data" >
             <GlobalData data={this.state.allCasesGlobal} />
           </div>

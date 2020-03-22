@@ -4,8 +4,8 @@ import './country.css'
 const Country = ({ country }) => {
   return(
     <div className="country-container" >
-      <p>{country.country}</p>
-      <p>total number of cases: {country.cases}</p>
+      <p className="country-name">{country.country}</p>
+      <p className="country-total-cases">total number of cases: {country.cases}</p>
       <p>total number of new cases today: {country.todayCases}</p>
       <p>total number of deaths: {country.deaths}</p>
       <p>total number of deaths today: {country.todayDeaths}</p>
